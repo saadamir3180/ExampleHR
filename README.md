@@ -55,7 +55,7 @@ This service uses a tiered consistency model to balance responsiveness with corr
 - Write operations (`POST /requests`, approve flow) re-check live HCM balances before committing (strong consistency for writes).
 - Optimistic locking via the `version` field prevents race conditions during concurrent approvals.
 ## Coverage Report
-A pre-generated unit test coverage report is included in the `coverage/` directory.
+A unit test coverage report is included in the `coverage/` directory.
 
 | File | Description |
 | --- | --- |
