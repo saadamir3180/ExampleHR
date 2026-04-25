@@ -1,4 +1,6 @@
 # Time-Off Service
+
+> **Repository:** https://github.com/saadamir3180/ExampleHR
 ## Prerequisites
 - Node.js 18+
 - npm 9+
@@ -52,3 +54,25 @@ This service uses a tiered consistency model to balance responsiveness with corr
 - Read operations return cached balance plus `lastSyncedAt` (eventual consistency for reads).
 - Write operations (`POST /requests`, approve flow) re-check live HCM balances before committing (strong consistency for writes).
 - Optimistic locking via the `version` field prevents race conditions during concurrent approvals.
+## Coverage Report
+A pre-generated unit test coverage report is included in the `coverage/` directory.
+
+| File | Description |
+| --- | --- |
+| `coverage/unit/lcov-report/index.html` | Interactive HTML report — open in any browser to browse coverage by file |
+| `coverage/unit/lcov.info` | Raw lcov data, compatible with CI tools and coverage badge services |
+| `coverage/unit/clover.xml` | Clover XML format for IDE and CI integrations |
+
+To regenerate the report at any time:
+```bash
+npm run test:cov
+```
+
+**Key service-layer coverage (unit tests only):**
+| File | Statements |
+| --- | --- |
+| `requests.service.ts` | 93.6% |
+| `balance.service.ts` | 91.8% |
+| `sync.service.ts` | 100% |
+
+> Controllers, guards, and filters are covered by the integration and E2E test suites, which are not included in the unit coverage report.
